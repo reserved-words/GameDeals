@@ -1,0 +1,44 @@
+﻿<div data-bind="visible: !postsCollection().length">
+    <p>No recent posts</p>
+</div>
+
+<div data-bind="foreach: postsCollection">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <table>
+                        <tr>
+                            <td width="1%;" style="vertical-align: top; padding-right: 0.6em;">
+                                <img data-bind="attr:{src: feedLogoUrl}" width="16" height="16"/>
+                            </td>
+                            <td>
+                                <a data-bind="text: title, attr:{href: url}" target="_blank"/>
+                                <span data-bind="visible: isNew" class="label label-primary">New</span>
+                            </td>
+                            <td width="1%;" style="vertical-align: top; padding-left: 0.6em;">
+                                <a class="pull-right" style="cursor: pointer;" data-toggle="collapse" data-bind="click: showHideSummary, attr: {'data-target': '#collapse'+$index()}">
+                                    <span class="glyphicon glyphicon-chevron-down" data-bind="visible: hideSummary"></span>
+                                    <span class="glyphicon glyphicon-chevron-up" data-bind="visible: showSummary"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div data-bind="attr: {id: 'collapse'+$index()}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p data-bind="text: summary" />
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <small>
+                        Published <span data-bind="text: moment(publishedAt).format('DD/MM/YYYY HH:mm:ss')"></span> at
+                        <a data-bind="text: feedTitle, attr:{href: feedUrl}" target="_blank"></a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center" data-bind="scroll: postsCollection().length < totalPosts(), scrollOptions: { loadFunc: getMorePosts }">Loading more posts...</div>

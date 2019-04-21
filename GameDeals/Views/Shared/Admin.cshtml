@@ -1,0 +1,30 @@
+﻿<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Feed URL
+        </th>
+        <th>
+            Logo
+        </th>
+    </tr>
+    <tbody data-bind="foreach: feedsCollection">
+        <tr>
+            <td data-bind="text: id"></td>
+            <td>
+                <a data-bind="text: title, attr:{href: url}" target="_blank" /> 
+            </td>
+            <td>
+                <a data-bind="text: feedUrl, attr:{href: feedUrl}" target="_blank" />
+            </td>
+            <td>
+                <img width="16" height="16" data-bind="attr:{src: logoUrl}" />
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,62 @@
+﻿@import (less) "bootstrap\bootstrap.less";
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-nav > li > a { 
+    cursor: pointer; 
+} 
+
+.navbar-brand{
+    padding: 5px 5px 5px 15px;
+}
+
+.navbar-brand > img {
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+div.spinner {
+    position: fixed;
+    left: 0;
+    top: 0;
+    opacity: 0.4;
+    z-index: 9999;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    background: no-repeat center #fff;
+}
+
+    div.spinner .spinner-element {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100px;
+        height: 100px;
+        margin: -50px 0px 0px -50px;
+    }
