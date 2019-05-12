@@ -5,6 +5,8 @@ namespace GameDeals.Data
 {
     public class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext() : this("GameDeals") { } // default connection string name
+
         public ApplicationDbContext(string connectionString)
             :base(connectionString)
         {
