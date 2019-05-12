@@ -12,7 +12,7 @@ dealsViewModel.onLoaded = function (data) {
 
 dealsViewModel.getMorePosts = function () {
     var offset = dealsViewModel.postsCollection().length;
-    var url = "/api/Posts/Get/" + dealsViewModel.categoryId() + "/10/" + offset;
+    var url = URL.posts(dealsViewModel.categoryId(), offset);
     ajax(url, function (data) {
         updatePosts(data);
     });

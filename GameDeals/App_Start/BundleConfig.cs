@@ -13,6 +13,7 @@ namespace GameDeals
                 "~/Scripts/KnockoutJS/ko-scrollHandler.js",
                 "~/Scripts/MomentJS/moment.min.js",
                 "~/Scripts/Bootstrap/bootstrap.js",
+                "~/Scripts/common.js",
                 "~/Scripts/deals.js",
                 "~/Scripts/admin.js",
                 "~/Scripts/main.js"));

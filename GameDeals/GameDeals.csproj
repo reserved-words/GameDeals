@@ -272,6 +272,7 @@
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\common.js" />
     <Content Include="Scripts\deals.js" />
     <Content Include="Scripts\JQuery\jquery-3.3.1.js" />
     <Content Include="Scripts\JQuery\jquery-3.3.1.min.js" />

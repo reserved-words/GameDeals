@@ -2,12 +2,12 @@
     menuItems: ko.observableArray(),
     menuClick: function (data, event) {
         if (data.id === 999) {
-            loadContent("/API/Feeds", "/Home/Admin", adminViewModel);
+            loadContent(URL.feeds(), URL.adminView(), adminViewModel);
         }
         else {
             loadCategories(false);
             dealsViewModel.categoryId(data.id);
-            loadContent("/API/Posts/Get/" + data.id + "/10/0", "/Home/Deals", dealsViewModel);
+            loadContent(URL.posts(data.id, 0), URL.dealsView(), dealsViewModel);
         }
     },
     loading: ko.observable(true)
@@ -57,7 +57,7 @@ var ajax = function (url, onLoaded) {
 }
 
 var loadCategories = function(selectDefault){
-    ajax("/API/Categories/Get", function (data) {
+    ajax(URL.categories(), function (data) {
         mainViewModel.onLoaded(data);
         if (selectDefault) {
             ko.applyBindings(mainViewModel);
