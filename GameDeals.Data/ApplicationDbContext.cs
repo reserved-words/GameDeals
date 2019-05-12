@@ -5,8 +5,8 @@ namespace GameDeals.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext()
-            :base("GameDeals")
+        public ApplicationDbContext(string connectionString)
+            :base(connectionString)
         {
         }
 

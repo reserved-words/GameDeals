@@ -35,7 +35,7 @@ var addPost = function(element)
         summary: element.Summary,
         feedTitle: element.Feed.Title,
         feedUrl: element.Feed.Url,
-        feedLogoUrl: "Content/Images/" + element.Feed.LogoFileName,
+        feedLogoUrl: URL.image(element.Feed.LogoFileName),
         showSummary: ko.observable(false),
         hideSummary: ko.observable(true),
         showHideSummary: function () {

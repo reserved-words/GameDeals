@@ -13,6 +13,12 @@ namespace GameDeals.App_Start
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "RssUpdateRoute",
+                routeTemplate: "api/Rss/Update",
+                defaults: new { controller = "Rss", action = "Update" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApiNoAction",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

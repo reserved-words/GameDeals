@@ -29,7 +29,7 @@ namespace GameDeals
             container.RegisterType<IMapper, Service>();
 
             // container.RegisterFactory<GetCurrentDateTime>(c => new GetCurrentDateTime(() => DateTime.Now));
-            container.RegisterFactory<Func<IUnitOfWork>>(c => new Func<IUnitOfWork>(() => new UnitOfWork()));
+            container.RegisterFactory<Func<IUnitOfWork>>(c => new Func<IUnitOfWork>(() => new UnitOfWork("GameDeals")));
         }
     }
 }

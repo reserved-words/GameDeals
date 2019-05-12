@@ -8,7 +8,7 @@ namespace GameDeals.Services
     {
         public void Log(Exception ex)
         {
-            
+            // TO DO
         }
     }
 }

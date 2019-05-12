@@ -7,8 +7,13 @@ namespace GameDeals.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+        private readonly ApplicationDbContext _context;
         private readonly Dictionary<Type, IRepository> _repositories = new Dictionary<Type, IRepository>();
+
+        public UnitOfWork(string connectionString)
+        {
+            _context = new ApplicationDbContext(connectionString);
+        }
 
         public IRepository<T> Repository<T>() where T : class
         {

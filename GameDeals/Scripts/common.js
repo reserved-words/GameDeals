@@ -5,6 +5,9 @@
     },
     getViewUrl: function (action) {
         return this.base + "/Home/" + action;
+    },
+    getImageUrl: function (filename) {
+        return this.base + "/Content/Images/" + filename;
     }
 };
 
@@ -26,4 +29,8 @@ URL.adminView = function () {
 
 URL.dealsView = function () {
     return this.getViewUrl("Deals");
+}
+
+URL.image = function (filename) {
+    return this.getImageUrl(filename);
 }
