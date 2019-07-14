@@ -8,7 +8,7 @@ namespace GameDeals.Data.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Categories",
+                "GameDeals.Categories",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -17,7 +17,7 @@ namespace GameDeals.Data.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Feeds",
+                "GameDeals.Feeds",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -30,11 +30,11 @@ namespace GameDeals.Data.Migrations
                         ConsecutiveErroredFetches = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
+                .ForeignKey("GameDeals.Categories", t => t.CategoryId, cascadeDelete: true)
                 .Index(t => t.CategoryId);
             
             CreateTable(
-                "dbo.Posts",
+                "GameDeals.Posts",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -49,20 +49,20 @@ namespace GameDeals.Data.Migrations
                         Seen = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Feeds", t => t.FeedId, cascadeDelete: true)
+                .ForeignKey("GameDeals.Feeds", t => t.FeedId, cascadeDelete: true)
                 .Index(t => t.FeedId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Posts", "FeedId", "dbo.Feeds");
-            DropForeignKey("dbo.Feeds", "CategoryId", "dbo.Categories");
-            DropIndex("dbo.Posts", new[] { "FeedId" });
-            DropIndex("dbo.Feeds", new[] { "CategoryId" });
-            DropTable("dbo.Posts");
-            DropTable("dbo.Feeds");
-            DropTable("dbo.Categories");
+            DropForeignKey("GameDeals.Posts", "FeedId", "GameDeals.Feeds");
+            DropForeignKey("GameDeals.Feeds", "CategoryId", "GameDeals.Categories");
+            DropIndex("GameDeals.Posts", new[] { "FeedId" });
+            DropIndex("GameDeals.Feeds", new[] { "CategoryId" });
+            DropTable("GameDeals.Posts");
+            DropTable("GameDeals.Feeds");
+            DropTable("GameDeals.Categories");
         }
     }
 }

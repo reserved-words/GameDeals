@@ -13,7 +13,7 @@ namespace GameDeals.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201904211333328_InitialCreate"; }
+            get { return "201907141847054_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

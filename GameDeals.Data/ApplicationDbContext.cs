@@ -15,5 +15,10 @@ namespace GameDeals.Data
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Feed> Feeds { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("GameDeals");
+        }
     }
 }
