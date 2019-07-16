@@ -39,6 +39,8 @@ namespace DatabaseMigrater
             {
                 var failedToMigrateException = new Exception("Failed to apply migrations", exc);
                 Console.WriteLine($"Didn't succeed in applying migrations: {exc.Message}");
+                System.IO.File.AppendAllText("errors.log", string.Format("{0:dd/MM/yyyy HH:mm}: {1}", DateTime.Now, exc.Message));
+                System.IO.File.AppendAllText("errors.log", string.Format("{0:dd/MM/yyyy HH:mm}: {1}", DateTime.Now, exc.StackTrace));
                 throw failedToMigrateException;
             }
         }
