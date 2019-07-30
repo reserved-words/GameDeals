@@ -21,10 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDeals.Updater", "GameDe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeploymentTools", "DeploymentTools", "{136F203F-9A46-4CCE-8515-D3DE3308C2BC}"
 	ProjectSection(SolutionItems) = preProject
-		AppSetUp.ps1 = AppSetUp.ps1
-		RunDatabaseMigrater.ps1 = RunDatabaseMigrater.ps1
-		SetupTools.psm1 = SetupTools.psm1
-		UserRights.psm1 = UserRights.psm1
+		DeploymentTools\AppSetUp.ps1 = DeploymentTools\AppSetUp.ps1
+		DeploymentTools\RunDatabaseMigrater.ps1 = DeploymentTools\RunDatabaseMigrater.ps1
+		DeploymentTools\SetupTools.psm1 = DeploymentTools\SetupTools.psm1
+		DeploymentTools\UserRights.psm1 = DeploymentTools\UserRights.psm1
 	EndProjectSection
 EndProject
 Global
