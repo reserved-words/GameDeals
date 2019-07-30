@@ -19,6 +19,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDeals.Mapper", "GameDea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDeals.Updater", "GameDeals.Updater\GameDeals.Updater.csproj", "{5CEC2411-9E86-432B-912A-79149BF300E0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeploymentTools", "DeploymentTools", "{136F203F-9A46-4CCE-8515-D3DE3308C2BC}"
+	ProjectSection(SolutionItems) = preProject
+		AppSetUp.ps1 = AppSetUp.ps1
+		RunDatabaseMigrater.ps1 = RunDatabaseMigrater.ps1
+		SetupTools.psm1 = SetupTools.psm1
+		UserRights.psm1 = UserRights.psm1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
