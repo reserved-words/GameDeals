@@ -26,10 +26,14 @@ namespace DatabaseMigrater
 
             using (var connection = new SqlConnection(connectionString))
             {
+                connection.Open();
+
                 using (var command = new SqlCommand(sql, connection) { CommandType = CommandType.Text })
                 {
                     command.ExecuteNonQuery();
                 }
+
+                connection.Close();
             }
         }
     }
