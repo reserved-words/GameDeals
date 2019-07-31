@@ -1,23 +1,36 @@
-﻿CREATE LOGIN [$(WebAppUser)] FROM WINDOWS WITH DEFAULT_DATABASE=[$(DatabaseName)], DEFAULT_LANGUAGE=[us_english]
-GO
+﻿DECLARE @SqlStatement NVARCHAR(500)
 
-CREATE USER [$(WebAppUser)] FOR LOGIN [$(WebAppUser)] WITH DEFAULT_SCHEMA = GameDeals
-GO
+IF NOT EXISTS (SELECT [LoginName] FROM SYSLOGINS WHERE [Name] = '$(WebAppUser)' AND DBNAME = '$(DatabaseName)')
+BEGIN
+    SET @SqlStatement = 'CREATE LOGIN ' + QUOTENAME('$(WebAppUser)') + ' FROM WINDOWS WITH DEFAULT_DATABASE=[$(DatabaseName)], DEFAULT_LANGUAGE=[us_english]'
+    EXEC sp_executesql @SqlStatement
+END
+
+IF NOT EXISTS (SELECT [Name] FROM SYSUSERS WHERE [Name] = '$(WebAppUser)')
+BEGIN
+    CREATE USER [$(WebAppUser)] FOR LOGIN [$(WebAppUser)] WITH DEFAULT_SCHEMA = GameDeals
+END
 
 GRANT CONNECT TO [$(WebAppUser)]
-GO
-
 GRANT SELECT ON SCHEMA::GameDeals TO [$(WebAppUser)]
-GO
 
-CREATE LOGIN [$(ServiceUser)] FROM WINDOWS WITH DEFAULT_DATABASE=[apps], DEFAULT_LANGUAGE=[us_english]
-GO
+IF NOT EXISTS (SELECT LoginName FROM SYSLOGINS WHERE NAME = '$(ServiceUser)' AND DBNAME = '$(DatabaseName)')
+BEGIN
+    SET @SqlStatement = 'CREATE LOGIN ' + QUOTENAME('$(ServiceUser)') + ' FROM WINDOWS WITH DEFAULT_DATABASE=[$(DatabaseName)], DEFAULT_LANGUAGE=[us_english]'
+    EXEC sp_executesql @SqlStatement
+END
 
-CREATE USER [$(ServiceUser)] FOR LOGIN [$(ServiceUser)] WITH DEFAULT_SCHEMA = GameDeals
-GO
+IF NOT EXISTS (SELECT [Name] FROM SYSUSERS WHERE [Name] = '$(WebAppUser)')
+BEGIN
+    CREATE USER [$(WebAppUser)] FOR LOGIN [$(WebAppUser)] WITH DEFAULT_SCHEMA = GameDeals
+	GRANT CONNECT TO [$(WebAppUser)]
+	GRANT SELECT ON SCHEMA::GameDeals TO [$(WebAppUser)]
+END
+
+IF NOT EXISTS (SELECT [Name] FROM SYSUSERS WHERE [Name] = '$(WebAppUser)')
+BEGIN
+    CREATE USER [$(ServiceUser)] FOR LOGIN [$(ServiceUser)] WITH DEFAULT_SCHEMA = GameDeals
+END
 
 GRANT CONNECT TO [$(ServiceUser)]
-GO
-
 GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::GameDeals TO [$(ServiceUser)]
-GO
