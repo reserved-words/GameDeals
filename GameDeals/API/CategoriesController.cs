@@ -7,16 +7,26 @@ namespace GameDeals.API
 {
     public class CategoriesController : ApiController
     {
+        private readonly ILogger _logger;
         private readonly IRssService _service;
 
-        public CategoriesController(IRssService service)
+        public CategoriesController(IRssService service, ILogger logger)
         {
+            _logger = logger;
             _service = service;
         }
 
         public IEnumerable<Category> Get()
         {
-            return _service.GetCategories();
+            try
+            {
+                return _service.GetCategories();
+            }
+            catch (System.Exception ex)
+            {
+                _logger.Log(ex);
+                throw;
+            }
         }
     }
 }
