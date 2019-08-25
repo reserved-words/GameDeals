@@ -23,11 +23,12 @@ END
 IF NOT EXISTS (SELECT [Name] FROM SYSUSERS WHERE [Name] = '$(WebAppUser)')
 BEGIN
     CREATE USER [$(WebAppUser)] FOR LOGIN [$(WebAppUser)] WITH DEFAULT_SCHEMA = GameDeals
-	GRANT CONNECT TO [$(WebAppUser)]
-	GRANT SELECT ON SCHEMA::GameDeals TO [$(WebAppUser)]
 END
 
-IF NOT EXISTS (SELECT [Name] FROM SYSUSERS WHERE [Name] = '$(WebAppUser)')
+GRANT CONNECT TO [$(WebAppUser)]
+GRANT SELECT ON SCHEMA::GameDeals TO [$(WebAppUser)]
+
+IF NOT EXISTS (SELECT [Name] FROM SYSUSERS WHERE [Name] = '$(ServiceUser)')
 BEGIN
     CREATE USER [$(ServiceUser)] FOR LOGIN [$(ServiceUser)] WITH DEFAULT_SCHEMA = GameDeals
 END

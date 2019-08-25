@@ -86,7 +86,6 @@ function New-TaskUser {
 function New-WebUser {
     param([string]$UserName, [string]$Password, [string]$AppFolderName)
 
-    
     New-User -UserName $UserName -Password $Password -GroupName "WebAccounts" -AppFolderLocation "C:\WebApps" -AppFolderName $AppFolderName
     Add-GroupMember -User $UserName -GroupName "IIS_IUSRS"
 }
@@ -113,10 +112,11 @@ function Run-Setup {
 }
 
 function Setup-WebApp {
-    param([string]$UserName, [string]$Password, [string]$AppName)
+    # param([string]$UserName, [string]$Password, [string]$AppName)
+	param([string]$AppName)
 
     Create-Directory -Path "C:\WebApps" -Name $AppName
-    New-WebUser -UserName $UserName -Password $Password -AppFolderName $AppName
+    # New-WebUser -UserName $UserName -Password $Password -AppFolderName $AppName
 }
 
 function Setup-Service {

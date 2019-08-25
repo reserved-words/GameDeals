@@ -26,19 +26,19 @@ namespace GameDeals
             Response.Headers.Remove("X-AspNet-Version");
         }
 
-        protected void Application_Error()
-        {
-            var exception = Server.GetLastError();
-            var logger = DependencyResolver.Current.GetService<ILogger>();
+        //protected void Application_Error()
+        //{
+        //    var exception = Server.GetLastError();
+        //    var logger = DependencyResolver.Current.GetService<ILogger>();
             
-            if (logger != null)
-            {
-                logger.Log(exception);
-            }
+        //    if (logger != null)
+        //    {
+        //        logger.Log(exception);
+        //    }
 
-            Response.Clear();
-            Server.ClearError();
-            Response.Redirect(string.Format("~/Error/Index"));
-        }
+        //    Response.Clear();
+        //    Server.ClearError();
+        //    Response.Redirect(string.Format("~/Error/Index"));
+        //}
     }
 }
