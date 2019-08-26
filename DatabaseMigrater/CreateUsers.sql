@@ -27,6 +27,7 @@ END
 
 GRANT CONNECT TO [$(WebAppUser)]
 GRANT SELECT ON SCHEMA::GameDeals TO [$(WebAppUser)]
+GRANT UPDATE ON GameDeals.Posts TO [$(WebAppUser)]
 
 IF NOT EXISTS (SELECT [Name] FROM SYSUSERS WHERE [Name] = '$(ServiceUser)')
 BEGIN
