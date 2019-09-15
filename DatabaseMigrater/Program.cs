@@ -7,17 +7,13 @@ namespace DatabaseMigrater
     {
         static void Main(string[] args)
         {
-            if (args.Length < 4 || args.Length > 5)
+            if (args.Length != 4)
                 throw new Exception("Incorrect numer of arguments");
 
             var connectionString = args[0];
             var databaseName = args[1];
             var webAppUser = args[2];
             var serviceUser = args[3];
-
-            var domainName = args.Length == 5
-                ? args[4]
-                : "";
 
             try
             {
@@ -30,7 +26,7 @@ namespace DatabaseMigrater
 
             try
             {
-                CreateUsers.Run(connectionString, databaseName, domainName, webAppUser, serviceUser);
+                CreateUsers.Run(connectionString, databaseName, webAppUser, serviceUser);
             }
             catch (Exception exc)
             {

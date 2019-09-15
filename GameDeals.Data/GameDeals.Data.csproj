@@ -53,9 +53,18 @@
     <Compile Include="Migrations\201907141847054_InitialCreate.Designer.cs">
       <DependentUpon>201907141847054_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909151017285_CreateUsersProcedure.cs" />
+    <Compile Include="Migrations\201909151017285_CreateUsersProcedure.Designer.cs">
+      <DependentUpon>201909151017285_CreateUsersProcedure.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +80,17 @@
     <EmbeddedResource Include="Migrations\201907141847054_InitialCreate.resx">
       <DependentUpon>201907141847054_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151017285_CreateUsersProcedure.resx">
+      <DependentUpon>201909151017285_CreateUsersProcedure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Procedures\DropProcedure_CreateUsers.sql" />
+    <Content Include="Procedures\CreateProcedure_CreateUsers.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
