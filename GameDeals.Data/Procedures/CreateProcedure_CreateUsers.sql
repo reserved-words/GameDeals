@@ -6,7 +6,8 @@ GO
 
 CREATE PROCEDURE [GameDeals].[CreateUsers]
 	@DatabaseName NVARCHAR(100),
-	@ServiceUser NVARCHAR(100),
+	@ServiceUserName NVARCHAR(100),
+	@ServiceUserPassword NVARCHAR(100),
 	@WebAppUser NVARCHAR(100)
 AS
 BEGIN
@@ -15,22 +16,26 @@ BEGIN
 
 	-- Create Service User
 
-	IF NOT EXISTS (SELECT LoginName FROM SYSLOGINS WHERE NAME = @ServiceUser AND DBNAME = @DatabaseName)
+	IF NOT EXISTS (SELECT LoginName FROM SYSLOGINS WHERE NAME = @ServiceUserName AND DBNAME = @DatabaseName)
 	BEGIN
-		SET @SqlStatement = 'CREATE LOGIN [' + @ServiceUser + '] FROM WINDOWS WITH DEFAULT_DATABASE=[' + @DatabaseName + '], DEFAULT_LANGUAGE=[us_english]'
+		SET @SqlStatement = 'CREATE LOGIN [' + @ServiceUserName + '] '
+			+ ' WITH PASSWORD = ' + @ServiceUserPassword + ', ' 
+			+ ' DEFAULT_DATABASE = [' + @DatabaseName + '], '
+			+ ' DEFAULT_LANGUAGE=[us_english]'
+
 		EXEC sp_executesql @SqlStatement
 	END
 
-	IF NOT EXISTS (SELECT [Name] FROM SYSUSERS WHERE [Name] = @ServiceUser)
+	IF NOT EXISTS (SELECT [Name] FROM SYSUSERS WHERE [Name] = @ServiceUserName)
 	BEGIN
-		SET @SqlStatement = 'CREATE USER [' + @ServiceUser + '] FOR LOGIN [' + @ServiceUser + '] WITH DEFAULT_SCHEMA = GameDeals'
+		SET @SqlStatement = 'CREATE USER [' + @ServiceUserName + '] FOR LOGIN [' + @ServiceUserName + '] WITH DEFAULT_SCHEMA = GameDeals'
 		EXEC sp_executesql @SqlStatement
 	END
 
-	SET @SqlStatement = 'GRANT CONNECT TO [' + @ServiceUser + ']'
+	SET @SqlStatement = 'GRANT CONNECT TO [' + @ServiceUserName + ']'
 	EXEC sp_executesql @SqlStatement
 
-	SET @SqlStatement = 'GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::GameDeals TO [' + @ServiceUser + ']'
+	SET @SqlStatement = 'GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::GameDeals TO [' + @ServiceUserName + ']'
 	EXEC sp_executesql @SqlStatement
 
 
