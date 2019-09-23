@@ -16,10 +16,10 @@ BEGIN
 
 	-- Create Service User
 
-	IF NOT EXISTS (SELECT LoginName FROM SYSLOGINS WHERE NAME = @ServiceUserName AND DBNAME = @DatabaseName)
+	IF NOT EXISTS (SELECT LoginName FROM SYSLOGINS WHERE NAME = @ServiceUserName)
 	BEGIN
 		SET @SqlStatement = 'CREATE LOGIN [' + @ServiceUserName + '] '
-			+ ' WITH PASSWORD = ' + @ServiceUserPassword + ', ' 
+			+ ' WITH PASSWORD = ''' + @ServiceUserPassword + ''', ' 
 			+ ' DEFAULT_DATABASE = [' + @DatabaseName + '], '
 			+ ' DEFAULT_LANGUAGE=[us_english]'
 
@@ -41,7 +41,7 @@ BEGIN
 
 	-- Create App Pool User
 
-	IF NOT EXISTS (SELECT LoginName FROM SYSLOGINS WHERE NAME = @WebAppUser AND DBNAME = @DatabaseName)
+	IF NOT EXISTS (SELECT LoginName FROM SYSLOGINS WHERE NAME = @WebAppUser)
 	BEGIN
 		SET @SqlStatement = 'CREATE LOGIN [' + @WebAppUser + '] FROM WINDOWS WITH DEFAULT_DATABASE=[' + @DatabaseName + '], DEFAULT_LANGUAGE=[us_english]'
 		EXEC sp_executesql @SqlStatement

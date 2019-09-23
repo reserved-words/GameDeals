@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201909171757028_AmendedCreateUsersProcedure.Designer.cs">
       <DependentUpon>201909171757028_AmendedCreateUsersProcedure.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909231305118_FixBugsInCreateUsersProc.cs" />
+    <Compile Include="Migrations\201909231305118_FixBugsInCreateUsersProc.Designer.cs">
+      <DependentUpon>201909231305118_FixBugsInCreateUsersProc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -89,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909171757028_AmendedCreateUsersProcedure.resx">
       <DependentUpon>201909171757028_AmendedCreateUsersProcedure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909231305118_FixBugsInCreateUsersProc.resx">
+      <DependentUpon>201909231305118_FixBugsInCreateUsersProc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
