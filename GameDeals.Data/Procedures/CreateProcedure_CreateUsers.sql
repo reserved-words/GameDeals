@@ -49,7 +49,7 @@ BEGIN
 
 	IF NOT EXISTS (SELECT [Name] FROM SYSUSERS WHERE [Name] = @WebAppUser)
 	BEGIN
-		SET @SqlStatement = 'CREATE USER [' + @WebAppUser + '] FOR LOGIN ' + @WebAppUser + ' WITH DEFAULT_SCHEMA = GameDeals'
+		SET @SqlStatement = 'CREATE USER [' + @WebAppUser + '] FOR LOGIN [' + @WebAppUser + '] WITH DEFAULT_SCHEMA = GameDeals'
 		EXEC sp_executesql @SqlStatement
 	END
 
