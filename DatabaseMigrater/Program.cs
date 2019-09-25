@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Linq;
+using System.IO;
+using System.Text;
 
 namespace DatabaseMigrater
 {
@@ -7,34 +8,66 @@ namespace DatabaseMigrater
     {
         static void Main(string[] args)
         {
-            if (args.Length != 5)
-                throw new Exception("Incorrect numer of arguments");
-
-            var connectionString = args[0];
-            var databaseName = args[1];
-            var webAppUser = args[2];
-            var serviceUserName = args[3];
-            var serviceUserPassword = args[4];
-
             try
             {
+                if (args.Length != 5)
+                    throw new Exception("Incorrect numer of arguments");
+
+                var connectionString = args[0];
+                var databaseName = args[1];
+                var webAppUser = args[2];
+                var serviceUserName = args[3];
+                var serviceUserPassword = args[4];
+                
                 CreateSchema.Run(connectionString);
-            }
-            catch (Exception exc)
-            {
-                throw new Exception("Failed to apply migrations", exc);
-            }
-
-            try
-            {
                 CreateUsers.Run(connectionString, databaseName, webAppUser, serviceUserName, serviceUserPassword);
             }
             catch (Exception exc)
             {
-                throw new Exception("Failed to create users", exc);
+                Log(exc);
             }
         }
+
+        private static void Log(Exception exc)
+        {
+            var logFolder = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "ReservedWords",
+                "GameDeals");
+
+            Directory.CreateDirectory(logFolder);
+
+            var str = new StringBuilder();
+
+            str.Append(DateTime.Now.ToString(@"dd/MM/yy HH:mm:ss"));
+            str.Append(Environment.NewLine);
+
+            while (exc != null)
+            {
+                str.Append(exc.Message);
+                str.Append(Environment.NewLine);
+
+                str.Append(exc.StackTrace);
+                str.Append(Environment.NewLine);
+
+                if (exc.Data != null)
+                {
+                    foreach (var key in exc.Data.Keys)
+                    {
+                        str.Append($"{key}: {exc.Data[key]}");
+                        str.Append(Environment.NewLine);
+                    }
+                }
+
+                exc = exc.InnerException;
+            }
+            
+            str.Append(Environment.NewLine);
+            str.Append(Environment.NewLine);
+
+            var logFile = Path.Combine(logFolder, "errors.log");
+            
+            File.AppendAllText(logFile, str.ToString());
+        }
     }
-
-
 }
