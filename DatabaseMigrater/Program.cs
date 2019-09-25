@@ -24,11 +24,11 @@ namespace DatabaseMigrater
             }
             catch (Exception exc)
             {
-                Log(exc);
+                Log(exc, args);
             }
         }
 
-        private static void Log(Exception exc)
+        private static void Log(Exception exc, string[] args)
         {
             var logFolder = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
@@ -60,6 +60,12 @@ namespace DatabaseMigrater
                 }
 
                 exc = exc.InnerException;
+            }
+
+            foreach (var arg in args)
+            {
+                str.Append($"arg: {arg}");
+                str.Append(Environment.NewLine);
             }
             
             str.Append(Environment.NewLine);
