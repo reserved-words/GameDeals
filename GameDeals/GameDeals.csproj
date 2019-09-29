@@ -182,7 +182,6 @@
     <Content Include="Content\site.min.css">
       <DependentUpon>site.css</DependentUpon>
     </Content>
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.less" />
@@ -270,6 +269,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\JQuery\jquery-3.3.1.intellisense.js" />
+    <Content Include="favicon.ico" />
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.min.js" />

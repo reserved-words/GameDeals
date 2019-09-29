@@ -27,6 +27,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeploymentTools", "Deployme
 		DeploymentTools\UserRights.psm1 = DeploymentTools\UserRights.psm1
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{5431A7C4-C1B1-4CF1-BDE8-12833FD273ED}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\icon.ico = Resources\icon.ico
+		Resources\icon.png = Resources\icon.png
+		Resources\icon.svg = Resources\icon.svg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
