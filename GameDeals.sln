@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2048
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDeals", "GameDeals\GameDeals.csproj", "{BDD24F3C-C771-45AD-966B-CF46DE53FCCD}"
 EndProject
@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 		Resources\icon.png = Resources\icon.png
 		Resources\icon.svg = Resources\icon.svg
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDeals.Api", "GameDeals.Api\GameDeals.Api.csproj", "{58AB6106-13F0-4F8A-99CF-0D46E3726013}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +74,10 @@ Global
 		{5CEC2411-9E86-432B-912A-79149BF300E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CEC2411-9E86-432B-912A-79149BF300E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CEC2411-9E86-432B-912A-79149BF300E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58AB6106-13F0-4F8A-99CF-0D46E3726013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58AB6106-13F0-4F8A-99CF-0D46E3726013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58AB6106-13F0-4F8A-99CF-0D46E3726013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58AB6106-13F0-4F8A-99CF-0D46E3726013}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
