@@ -1,7 +1,8 @@
 ﻿URL = {
     base: window.location.href,
     getAPIUrl: function (action) {
-        return "http://localhost:50284/api/" + action;
+        var baseUrl = $("#api-base-url").text();
+        return baseUrl + action;
     },
     getViewUrl: function (action) {
         return this.base + "/Home/" + action;

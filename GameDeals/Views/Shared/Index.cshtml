@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
     var favIcon = Url.Content("~/Content/Images/favicon.ico");
+    var apiBaseUrl = Html.Action("ApiBaseUrl");
 }
 
 <!DOCTYPE html>
@@ -59,6 +60,8 @@
     <div data-bind="visible: loading" class="spinner" id="loading-indicator">
         <img src="@Url.Content("~/Content/Images/loading.gif")" class="spinner-element" />
     </div>
+
+    <span class="d-none" id="api-base-url">@apiBaseUrl</span>
 
     @Scripts.Render("~/bundles/GameDeals")
 
