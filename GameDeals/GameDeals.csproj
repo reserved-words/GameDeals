@@ -265,6 +265,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Scripts\auth.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -313,6 +314,12 @@
     <Content Include="Scripts\MomentJS\moment-with-locales.min.js" />
     <Content Include="Scripts\MomentJS\moment.js" />
     <Content Include="Scripts\MomentJS\moment.min.js" />
+    <Content Include="Scripts\oidc-client-js\oidc-client.js" />
+    <Content Include="Scripts\oidc-client-js\oidc-client.min.js" />
+    <Content Include="Scripts\oidc-client-js\oidc-client.rsa256.slim.js" />
+    <Content Include="Scripts\oidc-client-js\oidc-client.rsa256.slim.min.js" />
+    <Content Include="Scripts\oidc-client-js\oidc-client.slim.js" />
+    <Content Include="Scripts\oidc-client-js\oidc-client.slim.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -339,6 +346,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\Callback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

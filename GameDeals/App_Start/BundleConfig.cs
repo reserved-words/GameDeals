@@ -13,10 +13,12 @@ namespace GameDeals
                 "~/Scripts/KnockoutJS/ko-scrollHandler.js",
                 "~/Scripts/MomentJS/moment.min.js",
                 "~/Scripts/Bootstrap/bootstrap.js",
+                "~/Scripts/oidc-client-js/oidc-client.js",
                 "~/Scripts/common.js",
                 "~/Scripts/deals.js",
                 "~/Scripts/admin.js",
-                "~/Scripts/main.js"));
+                "~/Scripts/main.js",
+                "~/Scripts/auth.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
