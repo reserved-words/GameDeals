@@ -10,6 +10,11 @@ namespace GameDeals.Controllers
             return View();
         }
 
+        public ActionResult Login()
+        {
+            return PartialView();
+        }
+
         public ActionResult Deals()
         {
             return PartialView();

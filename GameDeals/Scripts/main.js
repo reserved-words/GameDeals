@@ -31,14 +31,21 @@ mainViewModel.onLoaded = function (data) {
 }
 
 var loadContent = function (apiCallUrl, viewUrl, viewModel) {
-    ajax(apiCallUrl, function (data) {
-        viewModel.onLoaded(data);
+    if (apiCallUrl) {
+        ajax(apiCallUrl, function (data) {
+            viewModel.onLoaded(data);
+            $("#content").load(viewUrl, function () {
+                ko.cleanNode($('#content')[0]);
+                ko.applyBindings(viewModel, $('#content')[0]);
+                mainViewModel.loading(false);
+            });
+        });
+    }
+    else {
         $("#content").load(viewUrl, function () {
-            ko.cleanNode($('#content')[0]);
-            ko.applyBindings(viewModel, $('#content')[0]);
             mainViewModel.loading(false);
         });
-    });
+    }
 }
 
 var ajax = function (url, onLoaded) {
@@ -65,10 +72,6 @@ var loadCategories = function(selectDefault){
         }
     });
 }
-
-$(function () {
-    loadCategories(true);
-});
 
 $(document).on('click', '.navbar-collapse.in', function (e) {
     $(this).collapse('hide');

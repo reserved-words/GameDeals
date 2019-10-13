@@ -5,13 +5,7 @@
     <title></title>
 </head>
 <body>
-    <script src="Scripts/oidc-client-js/oidc-client.js"></script>
-    <script>
-        new Oidc.UserManager({ response_mode: "query" }).signinRedirectCallback().then(function () {
-            window.location = "index.html";
-        }).catch(function (e) {
-            console.error(e);
-        });
-    </script>
+    @Scripts.Render("~/bundles/GameDeals")
+    <script src="Scripts/callback.js"></script>
 </body>
 </html>
