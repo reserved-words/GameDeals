@@ -20,11 +20,6 @@ namespace GameDeals.Controllers
             return PartialView();
         }
 
-        public ActionResult Callback()
-        {
-            return View();
-        }
-
         public string ApiBaseUrl()
         {
             return ConfigurationManager.AppSettings["ApiBaseUrl"];

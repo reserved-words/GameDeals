@@ -43,21 +43,14 @@ var loadContent = function (apiCallUrl, viewUrl, viewModel) {
 
 var ajax = function (url, onLoaded) {
     mainViewModel.loading(true);
-    $.ajax({
-        type: "GET",
-        url: url,
-        success: function(data) {
-            onLoaded(data);
-            mainViewModel.loading(false);
-        },
-        error: function(ex) {
-            alert("Error");
-        }
+    callApi(url, function (data) {
+        onLoaded(data);
+        mainViewModel.loading(false);
     });
 }
 
-var loadCategories = function(selectDefault){
-    ajax(URL.categories(), function (data) {
+var loadCategories = function (selectDefault) {
+    callApi(URL.categories(), function (data) {
         mainViewModel.onLoaded(data);
         if (selectDefault) {
             ko.applyBindings(mainViewModel);
