@@ -4,6 +4,7 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using System.Configuration;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 [assembly: OwinStartup("Startup", typeof(GameDeals.Api.Startup))]
 namespace GameDeals.Api

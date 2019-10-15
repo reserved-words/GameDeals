@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Http;
 using GameDeals.Core.Interfaces;
-using GameDeals.Core.Model;
 
 namespace GameDeals.API
 {
@@ -16,16 +14,17 @@ namespace GameDeals.API
             _service = service;
         }
 
-        public IEnumerable<Category> Get()
+        [HttpGet]
+        public IHttpActionResult Get()
         {
             try
             {
-                return _service.GetCategories();
+                return Ok(_service.GetCategories());
             }
             catch (System.Exception ex)
             {
                 _logger.Log(ex);
-                throw;
+                return InternalServerError(ex);
             }
         }
     }

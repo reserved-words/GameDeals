@@ -50,17 +50,29 @@ var loadContent = function (apiCallUrl, viewUrl, viewModel) {
 
 var ajax = function (url, onLoaded) {
     mainViewModel.loading(true);
-    $.ajax({
-        type: "GET",
-        url: url,
-        success: function(data) {
-            onLoaded(data);
-            mainViewModel.loading(false);
-        },
-        error: function(ex) {
-            alert("Error");
+
+    mgr.getUser().then(function (user) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.onload = function () {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
         }
+        xhr.setRequestHeader("Authorization", "Bearer " + user.access_token);
+        xhr.send();
     });
+
+    //$.ajax({
+    //    type: "GET",
+    //    url: url,
+    //    success: function(data) {
+    //        onLoaded(data);
+    //        mainViewModel.loading(false);
+    //    },
+    //    error: function(ex) {
+    //        alert("Error");
+    //    }
+    //});
 }
 
 var loadCategories = function(selectDefault){
