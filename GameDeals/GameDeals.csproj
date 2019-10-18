@@ -350,16 +350,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameDeals.Core\GameDeals.Core.csproj">
-      <Project>{A1EFE4AB-20F5-4D31-BEAF-FE8168EE4419}</Project>
-      <Name>GameDeals.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GameDeals.Data.Contracts\GameDeals.Data.Contracts.csproj">
-      <Project>{A535D805-AEAD-49DB-A374-CDDB6B1A0FA2}</Project>
-      <Name>GameDeals.Data.Contracts</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,53 @@
+﻿using GameDeals.Data.Contracts;
+using System;
+using System.Collections.Generic;
+
+namespace GameDeals.Data2
+{
+    public class UnitOfWork : IUnitOfWork
+    {
+        private readonly ApplicationDbContext _context;
+        private readonly Dictionary<Type, IRepository> _repositories = new Dictionary<Type, IRepository>();
+
+        public UnitOfWork(string connectionString, string schemaName)
+        {
+            _context = new ApplicationDbContext(connectionString, schemaName);
+        }
+
+        public IRepository<T> Repository<T>() where T : class
+        {
+            if (!_repositories.TryGetValue(typeof(T), out IRepository repository))
+            {
+                repository = new Repository<T>(_context);
+                _repositories.Add(typeof(T), repository);
+            }
+
+            return repository as IRepository<T>;
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
+        private bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+            disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+    }
+}
