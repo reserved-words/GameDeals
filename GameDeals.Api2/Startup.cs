@@ -3,6 +3,7 @@ using GameDeals.Data.Contracts;
 using GameDeals.Data2;
 using GameDeals.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -10,25 +11,28 @@ namespace GameDeals.Api2
 {
     public class Startup
     {
+        private readonly IConfiguration _config;
+
+        public Startup(IConfiguration config)
+        {
+            _config = config;
+        }
+
+        public string ApiAllowedCorsOrigin => _config.GetValue<string>("ApiAllowedCorsOrigin");
+        public string ApiAuthorityUrl => _config.GetValue<string>("ApiAuthorityUrl");
+        public string ApiConnectionString => _config.GetValue<string>("ApiConnectionString");
+        public string ApiDatabaseSchemaName => _config.GetValue<string>("ApiDatabaseSchemaName");
+        public string ApiName => _config.GetValue<string>("ApiName");
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "http://localhost:5000";
+                    options.Authority = ApiAuthorityUrl;
                     options.RequireHttpsMetadata = false;
-                    options.Audience = "GameDealsApi";
+                    options.Audience = ApiName;
                 });
-
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("default", policy =>
-            //    {
-            //        policy.WithOrigins("http://localhost:50606")
-            //            .AllowAnyHeader()
-            //            .AllowAnyMethod();
-            //    });
-            //});
 
             services.AddCors();
 
@@ -37,7 +41,7 @@ namespace GameDeals.Api2
                 .AddAuthorization();
 
             services.AddTransient<ILogger, Logger>();
-            services.AddTransient(serviceProvider => new Func<IUnitOfWork>(() => new UnitOfWork("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=GameDeals;Integrated Security=True;", "dbo")));
+            services.AddTransient(serviceProvider => new Func<IUnitOfWork>(() => new UnitOfWork(ApiConnectionString, ApiDatabaseSchemaName)));
             services.AddTransient<IMapper, Mapper.Service>();
             services.AddTransient<IRssService, RssService>();
         }
@@ -46,7 +50,7 @@ namespace GameDeals.Api2
         {
             app.UseCors(
                 options => options
-                    .WithOrigins("http://localhost:50606")
+                    .WithOrigins(ApiAllowedCorsOrigin)
                     .AllowAnyMethod()
                     .AllowAnyHeader()
             );
