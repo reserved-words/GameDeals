@@ -17,4 +17,10 @@
     <ProjectReference Include="..\GameDeals.Services2\GameDeals.Services2.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -5,11 +5,14 @@ namespace GameDeals.Data2
 {
     public class ApplicationDbContext : DbContext
     {
+        private const string DefaultConnectionString = "Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=GameDeals;Integrated Security=True;";
+        private const string DefaultSchemaName = "dbo";
+
         private readonly string _connectionString;
         private readonly string _schemaName;
 
         public ApplicationDbContext()
-            :this("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=GameDeals;Integrated Security=True;", "dbo")
+            :this(DefaultConnectionString, DefaultSchemaName)
         {
         }
 

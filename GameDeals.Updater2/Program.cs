@@ -2,6 +2,7 @@
 using GameDeals.Services;
 using System;
 using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace GameDeals.Updater
 {
@@ -14,13 +15,14 @@ namespace GameDeals.Updater
             try
             {
                 var config = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())            
                     .AddJsonFile("appsettings.json", false, true)
                     .Build();
 
                 var service = new UpdateService(
                     new HtmlParser(),
                     new SyndicationFeedService(),
-                    () => new UnitOfWork(config["UpdaterConnectionString"], config["SchemaName"]),
+                    () => new UnitOfWork(config["UpdaterConnectionString"], config["UpdaterSchemaName"]),
                     logger);
 
                 service.UpdatePosts();
