@@ -1,5 +1,10 @@
+using GameDeals.Core.Interfaces;
+using GameDeals.Data.Contracts;
+using GameDeals.Data2;
+using GameDeals.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace GameDeals.Api2
 {
@@ -30,13 +35,15 @@ namespace GameDeals.Api2
             services.AddMvcCore()
                 .AddMvcOptions(opt => opt.EnableEndpointRouting = false)
                 .AddAuthorization();
+
+            services.AddTransient<ILogger, Logger>();
+            services.AddTransient(serviceProvider => new Func<IUnitOfWork>(() => new UnitOfWork("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=GameDeals;Integrated Security=True;", "dbo")));
+            services.AddTransient<IMapper, Mapper.Service>();
+            services.AddTransient<IRssService, RssService>();
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            //app.UseCors("default");
-            //app.UseMvc();
-
             app.UseCors(
                 options => options
                     .WithOrigins("http://localhost:50606")

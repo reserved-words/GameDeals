@@ -16,7 +16,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GameDeals.Core2\GameDeals.Core2.csproj" />
+    <ProjectReference Include="..\GameDeals.Data.Contracts2\GameDeals.Data.Contracts2.csproj" />
     <ProjectReference Include="..\GameDeals.Data2\GameDeals.Data2.csproj" />
+    <ProjectReference Include="..\GameDeals.Mapper2\GameDeals.Mapper2.csproj" />
+    <ProjectReference Include="..\GameDeals.Services2\GameDeals.Services2.csproj" />
   </ItemGroup>
 
 </Project>

@@ -19,8 +19,8 @@ dealsViewModel.getMorePosts = function () {
 }
 
 var updatePosts = function(data) {
-    dealsViewModel.totalPosts(data.TotalResults);
-    $(data.Results).each(function (index, element) {
+    dealsViewModel.totalPosts(data.totalResults);
+    $(data.results).each(function (index, element) {
         addPost(element);
     });
 }
@@ -28,14 +28,14 @@ var updatePosts = function(data) {
 var addPost = function(element)
 {
     dealsViewModel.postsCollection.push({
-        title: element.Title,
-        url: element.Url,
-        publishedAt: element.PublishedAt,
-        isNew: element.IsNew,
-        summary: element.Summary,
-        feedTitle: element.Feed.Title,
-        feedUrl: element.Feed.Url,
-        feedLogoUrl: URL.image(element.Feed.LogoFileName),
+        title: element.title,
+        url: element.url,
+        publishedAt: element.publishedAt,
+        isNew: element.isNew,
+        summary: element.summary,
+        feedTitle: element.feed.title,
+        feedUrl: element.feed.url,
+        feedLogoUrl: URL.image(element.feed.logoFileName),
         showSummary: ko.observable(false),
         hideSummary: ko.observable(true),
         showHideSummary: function () {

@@ -44,6 +44,7 @@ namespace GameDeals.Services
                     : 1;
 
                 var query = uow.Repository<PostEntity>()
+                    .Including(p => p.Feed)
                     .Where(p => p.Feed.CategoryId == categoryId && !p.Saved && !p.Deleted);
 
                 var total = query.Count();

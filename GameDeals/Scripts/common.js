@@ -5,7 +5,7 @@
         return baseUrl + action;
     },
     getViewUrl: function (action) {
-        return this.base + "/Home/" + action;
+        return this.base + "/" + action;
     },
     getImageUrl: function (filename) {
         return this.base + "/Content/Images/" + filename;
@@ -17,7 +17,7 @@ URL.categories = function () {
 }
 
 URL.posts = function (categoryId, offset) {
-    return this.getAPIUrl("Posts/Get/" + categoryId + "/10/" + offset);
+    return this.getAPIUrl("Posts/" + categoryId + "/10/" + offset);
 }
 
 URL.feeds = function () {

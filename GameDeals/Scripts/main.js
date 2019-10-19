@@ -18,9 +18,9 @@ mainViewModel.onLoaded = function (data) {
     self.menuItems.removeAll();
     $(data).each(function (index, element) {
         self.menuItems.push({
-            id: element.Id,
-            name: element.Value,
-            newPosts: element.NewPosts
+            id: element.id,
+            name: element.value,
+            newPosts: element.newPosts
         });
     });
     self.menuItems.push({
@@ -50,29 +50,16 @@ var loadContent = function (apiCallUrl, viewUrl, viewModel) {
 
 var ajax = function (url, onLoaded) {
     mainViewModel.loading(true);
-
     mgr.getUser().then(function (user) {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url);
         xhr.onload = function () {
-            console.log(xhr.status);
-            console.log(xhr.responseText);
+            onLoaded(JSON.parse(xhr.responseText));
+            mainViewModel.loading(false);
         }
         xhr.setRequestHeader("Authorization", "Bearer " + user.access_token);
         xhr.send();
     });
-
-    //$.ajax({
-    //    type: "GET",
-    //    url: url,
-    //    success: function(data) {
-    //        onLoaded(data);
-    //        mainViewModel.loading(false);
-    //    },
-    //    error: function(ex) {
-    //        alert("Error");
-    //    }
-    //});
 }
 
 var loadCategories = function(selectDefault){
