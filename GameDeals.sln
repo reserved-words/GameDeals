@@ -22,21 +22,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDeals.Api2", "GameDeals.Api2\GameDeals.Api2.csproj", "{0CAC515E-AEF5-46E6-8260-F13B016CFF8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDeals.Core2", "GameDeals.Core2\GameDeals.Core2.csproj", "{BE1A7673-3A50-41DF-B692-0FFD7EC4FEB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDeals.Core2", "GameDeals.Core2\GameDeals.Core2.csproj", "{BE1A7673-3A50-41DF-B692-0FFD7EC4FEB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDeals.Data.Contracts2", "GameDeals.Data.Contracts2\GameDeals.Data.Contracts2.csproj", "{B638B5EA-FFCC-440D-B500-946F9D2DE276}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDeals.Data.Contracts2", "GameDeals.Data.Contracts2\GameDeals.Data.Contracts2.csproj", "{B638B5EA-FFCC-440D-B500-946F9D2DE276}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDeals.Services2", "GameDeals.Services2\GameDeals.Services2.csproj", "{CED8C391-8B2B-4D43-8326-80666DB2E9B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDeals.Services2", "GameDeals.Services2\GameDeals.Services2.csproj", "{CED8C391-8B2B-4D43-8326-80666DB2E9B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDeals.Mapper2", "GameDeals.Mapper2\GameDeals.Mapper2.csproj", "{E8DF4FC2-6A01-49D8-BECB-3B24E66AC8E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDeals.Mapper2", "GameDeals.Mapper2\GameDeals.Mapper2.csproj", "{E8DF4FC2-6A01-49D8-BECB-3B24E66AC8E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDeals2", "GameDeals2\GameDeals2.csproj", "{C2F05C69-BFD7-4C78-8108-4CD5BC55B2E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDeals.Updater2", "GameDeals.Updater2\GameDeals.Updater2.csproj", "{9DD1E6B5-8D82-478D-A220-DD4B65650D91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDeals.Updater2", "GameDeals.Updater2\GameDeals.Updater2.csproj", "{9DD1E6B5-8D82-478D-A220-DD4B65650D91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDeals.Data2", "GameDeals.Data2\GameDeals.Data2.csproj", "{9F2745A7-2907-4906-9A64-F4353399352F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDeals.Data2", "GameDeals.Data2\GameDeals.Data2.csproj", "{9F2745A7-2907-4906-9A64-F4353399352F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseMigrater2", "DatabaseMigrater2\DatabaseMigrater2.csproj", "{B6D169B9-5907-4B69-B687-8D3ECBB05774}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseMigrater2", "DatabaseMigrater2\DatabaseMigrater2.csproj", "{B6D169B9-5907-4B69-B687-8D3ECBB05774}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,10 +66,6 @@ Global
 		{E8DF4FC2-6A01-49D8-BECB-3B24E66AC8E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8DF4FC2-6A01-49D8-BECB-3B24E66AC8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8DF4FC2-6A01-49D8-BECB-3B24E66AC8E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2F05C69-BFD7-4C78-8108-4CD5BC55B2E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2F05C69-BFD7-4C78-8108-4CD5BC55B2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2F05C69-BFD7-4C78-8108-4CD5BC55B2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2F05C69-BFD7-4C78-8108-4CD5BC55B2E4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9DD1E6B5-8D82-478D-A220-DD4B65650D91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9DD1E6B5-8D82-478D-A220-DD4B65650D91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DD1E6B5-8D82-478D-A220-DD4B65650D91}.Release|Any CPU.ActiveCfg = Release|Any CPU

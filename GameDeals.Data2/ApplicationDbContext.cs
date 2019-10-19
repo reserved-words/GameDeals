@@ -9,7 +9,7 @@ namespace GameDeals.Data2
         private readonly string _schemaName;
 
         public ApplicationDbContext()
-            :this("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=GameDeals;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\GameDeals.mdf", "dbo")
+            :this("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=GameDeals;Integrated Security=True;", "dbo")
         {
         }
 

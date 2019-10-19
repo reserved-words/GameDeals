@@ -13,7 +13,7 @@
 };
 
 URL.categories = function () {
-    return this.getAPIUrl("Categories/Get");
+    return this.getAPIUrl("Categories");
 }
 
 URL.posts = function (categoryId, offset) {

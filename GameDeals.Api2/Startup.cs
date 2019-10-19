@@ -7,10 +7,6 @@ namespace GameDeals.Api2
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvcCore()
-                .AddMvcOptions(opt => opt.EnableEndpointRouting = false)
-                .AddAuthorization();
-
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
@@ -19,22 +15,38 @@ namespace GameDeals.Api2
                     options.Audience = "GameDealsApi";
                 });
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("default", policy =>
-                {
-                    policy.WithOrigins("http://localhost:50606")
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
-                });
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("default", policy =>
+            //    {
+            //        policy.WithOrigins("http://localhost:50606")
+            //            .AllowAnyHeader()
+            //            .AllowAnyMethod();
+            //    });
+            //});
+
+            services.AddCors();
+
+            services.AddMvcCore()
+                .AddMvcOptions(opt => opt.EnableEndpointRouting = false)
+                .AddAuthorization();
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseCors("default");
+            //app.UseCors("default");
+            //app.UseMvc();
+
+            app.UseCors(
+                options => options
+                    .WithOrigins("http://localhost:50606")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+            );
+            
             app.UseAuthentication();
             app.UseMvc();
         }
     }
+
 }
