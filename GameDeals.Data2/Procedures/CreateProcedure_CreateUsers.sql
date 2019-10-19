@@ -11,8 +11,8 @@ CREATE PROCEDURE [GameDeals].[CreateUsers]
 	@WebAppUser NVARCHAR(100)
 AS
 BEGIN
-	DECLARE @SqlStatement NVARCHAR(500)
-
+	DECLARE @SqlStatement NVARCHAR(500),
+			@SchemaName NVARCHAR(100) = 'GameDeals'
 
 	-- Create Service User
 
@@ -28,14 +28,14 @@ BEGIN
 
 	IF NOT EXISTS (SELECT [Name] FROM SYSUSERS WHERE [Name] = @ServiceUserName)
 	BEGIN
-		SET @SqlStatement = 'CREATE USER [' + @ServiceUserName + '] FOR LOGIN [' + @ServiceUserName + '] WITH DEFAULT_SCHEMA = GameDeals'
+		SET @SqlStatement = 'CREATE USER [' + @ServiceUserName + '] FOR LOGIN [' + @ServiceUserName + '] WITH DEFAULT_SCHEMA = ' + @SchemaName
 		EXEC sp_executesql @SqlStatement
 	END
 
 	SET @SqlStatement = 'GRANT CONNECT TO [' + @ServiceUserName + ']'
 	EXEC sp_executesql @SqlStatement
 
-	SET @SqlStatement = 'GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::GameDeals TO [' + @ServiceUserName + ']'
+	SET @SqlStatement = 'GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::' + @SchemaName + ' TO [' + @ServiceUserName + ']'
 	EXEC sp_executesql @SqlStatement
 
 
@@ -49,17 +49,17 @@ BEGIN
 
 	IF NOT EXISTS (SELECT [Name] FROM SYSUSERS WHERE [Name] = @WebAppUser)
 	BEGIN
-		SET @SqlStatement = 'CREATE USER [' + @WebAppUser + '] FOR LOGIN [' + @WebAppUser + '] WITH DEFAULT_SCHEMA = GameDeals'
+		SET @SqlStatement = 'CREATE USER [' + @WebAppUser + '] FOR LOGIN [' + @WebAppUser + '] WITH DEFAULT_SCHEMA = ' + @SchemaName
 		EXEC sp_executesql @SqlStatement
 	END
 
 	SET @SqlStatement = 'GRANT CONNECT TO [' + @WebAppUser + ']'
 	EXEC sp_executesql @SqlStatement
 
-	SET @SqlStatement = 'GRANT SELECT ON SCHEMA::GameDeals TO [' + @WebAppUser + ']'
+	SET @SqlStatement = 'GRANT SELECT ON SCHEMA::' + @SchemaName + ' TO [' + @WebAppUser + ']'
 	EXEC sp_executesql @SqlStatement
 
-	SET @SqlStatement = 'GRANT UPDATE ON GameDeals.Posts TO [' + @WebAppUser + ']'
+	SET @SqlStatement = 'GRANT UPDATE ON ' + @SchemaName + '.Posts TO [' + @WebAppUser + ']'
 	EXEC sp_executesql @SqlStatement
 END
 GO

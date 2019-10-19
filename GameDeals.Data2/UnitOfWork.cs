@@ -9,9 +9,9 @@ namespace GameDeals.Data2
         private readonly ApplicationDbContext _context;
         private readonly Dictionary<Type, IRepository> _repositories = new Dictionary<Type, IRepository>();
 
-        public UnitOfWork(string connectionString, string schemaName)
+        public UnitOfWork(string connectionString)
         {
-            _context = new ApplicationDbContext(connectionString, schemaName);
+            _context = new ApplicationDbContext(connectionString);
         }
 
         public IRepository<T> Repository<T>() where T : class

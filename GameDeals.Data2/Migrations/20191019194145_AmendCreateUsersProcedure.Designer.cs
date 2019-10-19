@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameDeals.Data2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191019091521_AddCreateUsersStoredProcedure")]
-    partial class AddCreateUsersStoredProcedure
+    [Migration("20191019194145_AmendCreateUsersProcedure")]
+    partial class AmendCreateUsersProcedure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("dbo")
+                .HasDefaultSchema("GameDeals")
                 .HasAnnotation("ProductVersion", "3.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);

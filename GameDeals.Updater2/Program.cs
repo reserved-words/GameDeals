@@ -22,7 +22,7 @@ namespace GameDeals.Updater
                 var service = new UpdateService(
                     new HtmlParser(),
                     new SyndicationFeedService(),
-                    () => new UnitOfWork(config["UpdaterConnectionString"], config["UpdaterSchemaName"]),
+                    () => new UnitOfWork(config["UpdaterConnectionString"]),
                     logger);
 
                 service.UpdatePosts();

@@ -8,11 +8,11 @@ namespace GameDeals.Data2.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
-                name: "dbo");
+                name: "GameDeals");
 
             migrationBuilder.CreateTable(
                 name: "Categories",
-                schema: "dbo",
+                schema: "GameDeals",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -26,7 +26,7 @@ namespace GameDeals.Data2.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Feeds",
-                schema: "dbo",
+                schema: "GameDeals",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -45,7 +45,7 @@ namespace GameDeals.Data2.Migrations
                     table.ForeignKey(
                         name: "FK_Feeds_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalSchema: "dbo",
+                        principalSchema: "GameDeals",
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -53,7 +53,7 @@ namespace GameDeals.Data2.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Posts",
-                schema: "dbo",
+                schema: "GameDeals",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -74,7 +74,7 @@ namespace GameDeals.Data2.Migrations
                     table.ForeignKey(
                         name: "FK_Posts_Feeds_FeedId",
                         column: x => x.FeedId,
-                        principalSchema: "dbo",
+                        principalSchema: "GameDeals",
                         principalTable: "Feeds",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -82,13 +82,13 @@ namespace GameDeals.Data2.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Feeds_CategoryId",
-                schema: "dbo",
+                schema: "GameDeals",
                 table: "Feeds",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_FeedId",
-                schema: "dbo",
+                schema: "GameDeals",
                 table: "Posts",
                 column: "FeedId");
         }
@@ -97,15 +97,15 @@ namespace GameDeals.Data2.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Posts",
-                schema: "dbo");
+                schema: "GameDeals");
 
             migrationBuilder.DropTable(
                 name: "Feeds",
-                schema: "dbo");
+                schema: "GameDeals");
 
             migrationBuilder.DropTable(
                 name: "Categories",
-                schema: "dbo");
+                schema: "GameDeals");
         }
     }
 }

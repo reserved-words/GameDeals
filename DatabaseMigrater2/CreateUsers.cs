@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using GameDeals.Data2;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -20,7 +21,7 @@ namespace DatabaseMigrater
                     new SqlParameter("@WebAppUser", webAppUser)
                 };
 
-                using (var command = new SqlCommand("[GameDeals].[CreateUsers]", connection) { CommandType = CommandType.StoredProcedure })
+                using (var command = new SqlCommand($"[{ApplicationDbContext.SchemaName}].[CreateUsers]", connection) { CommandType = CommandType.StoredProcedure })
                 {
                     command.Parameters.AddRange(parameters.ToArray());
                     command.ExecuteNonQuery();

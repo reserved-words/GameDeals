@@ -5,21 +5,20 @@ namespace GameDeals.Data2
 {
     public class ApplicationDbContext : DbContext
     {
-        private const string DefaultConnectionString = "Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=GameDeals;Integrated Security=True;";
-        private const string DefaultSchemaName = "dbo";
+        public static string SchemaName = "GameDeals";
 
+        private const string DefaultConnectionString = "Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=GameDeals;Integrated Security=True;";
+        
         private readonly string _connectionString;
-        private readonly string _schemaName;
 
         public ApplicationDbContext()
-            :this(DefaultConnectionString, DefaultSchemaName)
+            :this(DefaultConnectionString)
         {
         }
 
-        public ApplicationDbContext(string connectionString, string schemaName)
+        public ApplicationDbContext(string connectionString)
         {
             _connectionString = connectionString;
-            _schemaName = schemaName;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -33,7 +32,7 @@ namespace GameDeals.Data2
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema(_schemaName);
+            modelBuilder.HasDefaultSchema(SchemaName);
         }
     }
 }

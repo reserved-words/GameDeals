@@ -21,7 +21,6 @@ namespace GameDeals.Api2
         public string ApiAllowedCorsOrigin => _config.GetValue<string>("ApiAllowedCorsOrigin");
         public string ApiAuthorityUrl => _config.GetValue<string>("ApiAuthorityUrl");
         public string ApiConnectionString => _config.GetValue<string>("ApiConnectionString");
-        public string ApiDatabaseSchemaName => _config.GetValue<string>("ApiDatabaseSchemaName");
         public string ApiName => _config.GetValue<string>("ApiName");
 
         public void ConfigureServices(IServiceCollection services)
@@ -41,7 +40,7 @@ namespace GameDeals.Api2
                 .AddAuthorization();
 
             services.AddTransient<ILogger, Logger>();
-            services.AddTransient(serviceProvider => new Func<IUnitOfWork>(() => new UnitOfWork(ApiConnectionString, ApiDatabaseSchemaName)));
+            services.AddTransient(serviceProvider => new Func<IUnitOfWork>(() => new UnitOfWork(ApiConnectionString)));
             services.AddTransient<IMapper, Mapper.Service>();
             services.AddTransient<IRssService, RssService>();
         }
