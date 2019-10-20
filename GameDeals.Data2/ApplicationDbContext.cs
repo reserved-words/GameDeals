@@ -23,7 +23,7 @@ namespace GameDeals.Data2
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_connectionString);
+            optionsBuilder.UseSqlServer(_connectionString, x => x.MigrationsHistoryTable("__MigrationsHistory", SchemaName));
         }
 
         public virtual DbSet<Category> Categories { get; set; }
