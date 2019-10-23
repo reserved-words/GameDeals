@@ -5,7 +5,7 @@ function authorize(config){
     var authConfig = {
         authority: config.authUrl,
         client_id: config.authClientId,
-        redirect_uri: config.authCallback,
+        redirect_uri: config.homeUrl + "Callback",
         response_type: config.authResponseType,
         scope: config.authScope,
         post_logout_redirect_uri: config.homeUrl,
@@ -22,7 +22,7 @@ function authorize(config){
             console.log("User not logged in");
             ko.applyBindings(mainViewModel);
             mainViewModel.loading(false);
-            loadContent(null, config.loginUrl, null);
+            loadContent(null, config.homeUrl + "Login", null);
         }
     });
 }
