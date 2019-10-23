@@ -3,6 +3,7 @@ using GameDeals.Services;
 using System;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using System.Reflection;
 
 namespace GameDeals.Updater
 {
@@ -14,8 +15,10 @@ namespace GameDeals.Updater
 
             try
             {
+                var directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
                 var config = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())            
+                    .SetBasePath(directory)
                     .AddJsonFile("appsettings.json", false, true)
                     .Build();
 
