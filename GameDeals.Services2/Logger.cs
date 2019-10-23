@@ -9,10 +9,11 @@ namespace GameDeals.Services
         public void Log(Exception ex)
         {
             var directory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            var path = Path.Combine(directory, "GameDeals", "errors.log");
+            var path = Path.Combine(directory, "GameDeals");
             Directory.CreateDirectory(path);
-            File.AppendAllText(path, ex.Message);
-            File.AppendAllText(path, ex.StackTrace);
+            var filepath = Path.Combine(path, "errors.log");
+            File.AppendAllText(filepath, ex.Message);
+            File.AppendAllText(filepath, ex.StackTrace);
         }
     }
 }
