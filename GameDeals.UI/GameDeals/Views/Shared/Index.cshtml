@@ -2,6 +2,7 @@
     Layout = null;
     var favIcon = Url.Content("~/Content/Images/favicon.ico");
     var apiBaseUrl = Html.Action("ApiBaseUrl");
+    var appBaseUrl = Url.Action("Index", "Home");
 }
 
 <!DOCTYPE html>
@@ -62,6 +63,7 @@
     </div>
 
     <span style="display: none;" id="api-base-url">@apiBaseUrl</span>
+    <span style="display: none;" id="app-base-url">@appBaseUrl</span>
 
     @Scripts.Render("~/bundles/GameDeals")
 

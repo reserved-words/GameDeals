@@ -35,3 +35,5 @@ URL.dealsView = function () {
 URL.image = function (filename) {
     return this.getImageUrl(filename);
 }
+
+URL.home = $("#app-base-url").text();

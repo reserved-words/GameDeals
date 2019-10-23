@@ -5,10 +5,10 @@ function authorize(config){
     var authConfig = {
         authority: config.authUrl,
         client_id: config.authClientId,
-        redirect_uri: config.homeUrl + "Callback",
+        redirect_uri: URL.home + "Callback",
         response_type: config.authResponseType,
         scope: config.authScope,
-        post_logout_redirect_uri: config.homeUrl,
+        post_logout_redirect_uri: URL.home,
     };
 
     mgr = new Oidc.UserManager(authConfig);
@@ -22,7 +22,7 @@ function authorize(config){
             console.log("User not logged in");
             ko.applyBindings(mainViewModel);
             mainViewModel.loading(false);
-            loadContent(null, config.homeUrl + "Login", null);
+            loadContent(null, URL.home + "Login", null);
         }
     });
 }
@@ -33,7 +33,7 @@ function login() {
 
 function callback() {
     new Oidc.UserManager({ response_mode: "query" }).signinRedirectCallback().then(function () {
-        window.location = config.homeUrl;
+        window.location = URL.home;
     }).catch(function (e) {
         console.error(e);
     });
@@ -48,7 +48,7 @@ $(function ()
     $("body").on("click", "#login", login);
 
     var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", "appsettings.json", false);
+    rawFile.open("GET", URL.home + "appsettings.json", false);
     rawFile.onreadystatechange = function () {
         if (rawFile.readyState === 4) {
             if (rawFile.status === 200 || rawFile.status == 0) {
