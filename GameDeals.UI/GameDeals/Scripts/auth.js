@@ -1,28 +1,27 @@
 ﻿var config = "";
 var mgr = null;
 
-function authorize(config){
+function authorize(config) {
+
     var authConfig = {
         authority: config.authUrl,
         client_id: config.authClientId,
-        redirect_uri: URL.home + "Callback",
+        redirect_uri: window.applicationBaseUrl + "Callback",
         response_type: config.authResponseType,
         scope: config.authScope,
-        post_logout_redirect_uri: URL.home,
+        post_logout_redirect_uri: window.applicationBaseUrl,
     };
 
     mgr = new Oidc.UserManager(authConfig);
 
     mgr.getUser().then(function (user) {
         if (user) {
-            console.log("User logged in");
             loadCategories(true);
         }
         else {
-            console.log("User not logged in");
             ko.applyBindings(mainViewModel);
             mainViewModel.loading(false);
-            loadContent(null, URL.home + "Login", null);
+            loadContent(null, window.applicationBaseUrl + "Login", null);
         }
     });
 }
@@ -33,7 +32,7 @@ function login() {
 
 function callback() {
     new Oidc.UserManager({ response_mode: "query" }).signinRedirectCallback().then(function () {
-        window.location = URL.home;
+        window.location = window.applicationBaseUrl;
     }).catch(function (e) {
         console.error(e);
     });
@@ -48,7 +47,7 @@ $(function ()
     $("body").on("click", "#login", login);
 
     var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", URL.home + "appsettings.json", false);
+    rawFile.open("GET", window.applicationBaseUrl + "appsettings.json", false);
     rawFile.onreadystatechange = function () {
         if (rawFile.readyState === 4) {
             if (rawFile.status === 200 || rawFile.status == 0) {

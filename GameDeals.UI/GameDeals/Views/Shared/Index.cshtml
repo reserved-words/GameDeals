@@ -2,7 +2,9 @@
     Layout = null;
     var favIcon = Url.Content("~/Content/Images/favicon.ico");
     var apiBaseUrl = Html.Action("ApiBaseUrl");
-    var appBaseUrl = Url.Action("Index", "Home");
+    var appBaseUrl = Html.Raw(HttpUtility.JavaScriptStringEncode(new Uri(
+        new Uri(this.Context.Request.Url.GetLeftPart(UriPartial.Authority)), 
+        Url.Content("~/")).ToString(), true));
 }
 
 <!DOCTYPE html>
@@ -13,6 +15,10 @@
     <title>Game Deals</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <script type="text/javascript">
+        window.applicationBaseUrl = @appBaseUrl;
+    </script>
 
     <meta name="description" content="Game Deals" />
     <link rel="icon" href="@favIcon" />
@@ -63,7 +69,6 @@
     </div>
 
     <span style="display: none;" id="api-base-url">@apiBaseUrl</span>
-    <span style="display: none;" id="app-base-url">@appBaseUrl</span>
 
     @Scripts.Render("~/bundles/GameDeals")
 
