@@ -345,6 +345,7 @@
     <Content Include="Scripts\Bootstrap\popper-utils.js.map" />
     <Content Include="Views\Shared\Callback.cshtml" />
     <Content Include="Views\Shared\Login.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
