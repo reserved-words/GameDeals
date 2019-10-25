@@ -24,33 +24,6 @@
 </head>
 <body>
 
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand">
-                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                        <img alt="Brand" src="@favIcon">
-                    </a>
-                </div>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" data-bind="foreach: menuItems">
-                    <li>
-                        <a data-bind="click: $root.menuClick">
-                            <span data-bind="text: name"></span>
-                            <span class="badge" data-bind="text: newPosts, visible: newPosts" style="margin-top: -2px;"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
     @RenderBody()
 
     <span style="display: none;" id="api-base-url">@apiBaseUrl</span>
