@@ -1,14 +1,13 @@
 ﻿URL = {
-    base: window.location.href,
     getAPIUrl: function (action) {
         var baseUrl = $("#api-base-url").text();
         return baseUrl + action;
     },
     getViewUrl: function (action) {
-        return this.base + "/" + action;
+        return window.applicationBaseUrl + action;
     },
     getImageUrl: function (filename) {
-        return this.base + "/Content/Images/" + filename;
+        return window.applicationBaseUrl + "Content/Images/" + filename;
     }
 };
 
