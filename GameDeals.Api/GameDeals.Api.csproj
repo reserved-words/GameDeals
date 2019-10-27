@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GameDeals.Core\GameDeals.Core.csproj" />
+    <ProjectReference Include="..\GameDeals.Data.Contracts\GameDeals.Data.Contracts.csproj" />
+    <ProjectReference Include="..\GameDeals.Data\GameDeals.Data.csproj" />
+    <ProjectReference Include="..\GameDeals.Mapper\GameDeals.Mapper.csproj" />
+    <ProjectReference Include="..\GameDeals.Services\GameDeals.Services.csproj" />
+  </ItemGroup>
+
+</Project>
