@@ -168,6 +168,7 @@
     <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\hotdeals.ico" />
     <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\playstation.png" />
     <Content Include="Content\Images\postabargain.ico" />
     <Content Include="Content\Images\xbox.png" />
