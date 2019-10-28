@@ -1,4 +1,13 @@
-﻿var config = "";
+﻿loginViewModel = {
+    loginClick: function (data, event) {
+        login();
+    }
+};
+
+loginViewModel.onLoaded = function (data) {
+}
+
+var config = "";
 var mgr = null;
 
 function authorize(config) {
@@ -15,13 +24,15 @@ function authorize(config) {
     mgr = new Oidc.UserManager(authConfig);
 
     mgr.getUser().then(function (user) {
+        ko.applyBindings(mainViewModel);
         if (user) {
+            mainViewModel.loggedIn(true);
             loadCategories(true);
         }
         else {
-            ko.applyBindings(mainViewModel);
+            mainViewModel.loggedIn(false);
             mainViewModel.loading(false);
-            loadContent(null, window.applicationBaseUrl + "Login", null);
+            loadContent(null, window.applicationBaseUrl + "Login", loginViewModel);
         }
     });
 }
@@ -40,12 +51,18 @@ function callback() {
 
 function logout() {
     mgr.signoutRedirect();
+
+    mgr.getUser().then(function (user) {
+        if (!user) {
+        }
+        else {
+            mainViewModel.loggedIn(false);
+        }
+    });
 }
 
 $(function ()
 {
-    $("body").on("click", "#login", login);
-
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", window.applicationBaseUrl + "appsettings.json", false);
     rawFile.onreadystatechange = function () {

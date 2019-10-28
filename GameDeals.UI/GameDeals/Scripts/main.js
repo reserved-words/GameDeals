@@ -10,7 +10,11 @@
             loadContent(URL.posts(data.id, 0), URL.dealsView(), dealsViewModel);
         }
     },
-    loading: ko.observable(true)
+    loading: ko.observable(true),
+    logoutClick: function (data, event) {
+        logout();
+    },
+    loggedIn: ko.observable(false)
 };
 
 mainViewModel.onLoaded = function (data) {
@@ -43,7 +47,12 @@ var loadContent = function (apiCallUrl, viewUrl, viewModel) {
     }
     else {
         $("#content").load(viewUrl, function () {
-            mainViewModel.loading(false);
+            viewModel.onLoaded();
+            $("#content").load(viewUrl, function () {
+                ko.cleanNode($('#content')[0]);
+                ko.applyBindings(viewModel, $('#content')[0]);
+                mainViewModel.loading(false);
+            });
         });
     }
 }
@@ -66,7 +75,6 @@ var loadCategories = function(selectDefault){
     ajax(URL.categories(), function (data) {
         mainViewModel.onLoaded(data);
         if (selectDefault) {
-            ko.applyBindings(mainViewModel);
             mainViewModel.menuClick({ id: 2 }, null);
         }
     });
