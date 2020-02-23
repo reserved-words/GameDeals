@@ -11,8 +11,6 @@ namespace GameDeals.Updater
     {
         static void Main(string[] args)
         {
-            var logger = new Logger();
-
             try
             {
                 var directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -21,6 +19,8 @@ namespace GameDeals.Updater
                     .SetBasePath(directory)
                     .AddJsonFile("appsettings.json", false, true)
                     .Build();
+
+                var logger = new Logger(config);
 
                 var service = new UpdateService(
                     new HtmlParser(),
@@ -32,7 +32,8 @@ namespace GameDeals.Updater
             }
             catch (Exception ex)
             {
-                logger.Log(ex);
+                // TO DO
+                // logger.Log(ex);
             }
         }
     }
