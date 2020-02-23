@@ -1,6 +1,7 @@
 ﻿using GameDeals.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace GameDeals.API
 {
@@ -17,17 +18,10 @@ namespace GameDeals.API
             _service = service;
         }
 
+        [HttpGet]
         public IActionResult Get()
         {
-            try
-            {
-                return Ok(_service.GetCategories());
-            }
-            catch (System.Exception ex)
-            {
-                _logger.Log(ex);
-                throw ex;
-            }
+            return Ok(_service.GetCategories());
         }
     }
 }

@@ -6,8 +6,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
-namespace GameDeals.Api2
+namespace GameDeals.Api
 {
     public class Startup
     {
@@ -25,6 +28,11 @@ namespace GameDeals.Api2
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("1.0.0", new OpenApiInfo { Title = "GameDealsAPI", Version = "1.0.0" });
+            });
+
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
@@ -36,6 +44,7 @@ namespace GameDeals.Api2
             services.AddCors();
 
             services.AddMvcCore()
+                 .AddApiExplorer()
                 .AddMvcOptions(opt => opt.EnableEndpointRouting = false)
                 .AddAuthorization();
 
@@ -43,17 +52,34 @@ namespace GameDeals.Api2
             services.AddTransient(serviceProvider => new Func<IUnitOfWork>(() => new UnitOfWork(ApiConnectionString)));
             services.AddTransient<IMapper, Mapper.Service>();
             services.AddTransient<IRssService, RssService>();
+
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");
+            }
+
             app.UseCors(
                 options => options
                     .WithOrigins(ApiAllowedCorsOrigin)
                     .AllowAnyMethod()
                     .AllowAnyHeader()
             );
-            
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/1.0.0/swagger.json", "GameDealsAPI 1.0.0");
+            });
+
             app.UseAuthentication();
             app.UseMvc();
         }

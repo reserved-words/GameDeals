@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace GameDeals.Api2
+namespace GameDeals.Api
 {
     public class Program
     {

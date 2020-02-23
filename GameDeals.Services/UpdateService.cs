@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-// using System.Data.Entity.Validation;
 using System.Linq;
 using System.ServiceModel.Syndication;
 using GameDeals.Core.Interfaces;
@@ -47,49 +46,11 @@ namespace GameDeals.Services
             {
                 uow.Save();
             }
-            //catch (DbEntityValidationException ve)
-            //{
-            //    if (HandleValidationErrors(ve, uow))
-            //    {
-            //        TrySave(uow);
-            //    }
-            //}
             catch (Exception ex)
             {
-                _logger.Log(ex);
+                _logger.Log("GameDealsUpdater", ex);
             }
         }
-
-        //private bool HandleValidationErrors(DbEntityValidationException ve, IUnitOfWork uow)
-        //{
-        //    var unhandledError = false;
-
-        //    foreach (var error in ve.EntityValidationErrors)
-        //    {
-        //        foreach (var v in error.ValidationErrors)
-        //        {
-        //            ve.Data.Add("Property", v.PropertyName);
-        //            ve.Data.Add("Message", v.ErrorMessage);
-        //        }
-
-        //        var post = error.Entry.Entity as Post;
-
-        //        if (post == null)
-        //        {
-        //            unhandledError = true;
-        //        }
-        //        else
-        //        {
-        //            ve.Data.Add("Feed", post.Feed.Title);
-        //            ve.Data.Add("Post URL", post.Url);
-        //            uow.Repository<Post>().Delete(post);
-        //        }
-
-        //        _logger.Log(ve);
-        //    }
-
-        //    return !unhandledError;
-        //}
 
         private void Update(Feed feed, IUnitOfWork uow)
         {
@@ -151,7 +112,7 @@ namespace GameDeals.Services
             {
                 ex.Data.Add("Feed", $"{feed.Id} - {feed.Title}");
                 ex.Data.Add("Feed URL", feed.FeedUrl);
-                _logger.Log(ex);
+                _logger.Log("GameDealsUpdater", ex);
                 errored = true;
                 items = new SyndicationItem[] {};
             }
