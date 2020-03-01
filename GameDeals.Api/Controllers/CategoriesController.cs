@@ -1,7 +1,6 @@
 ﻿using GameDeals.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using System;
 
 namespace GameDeals.API
 {
