@@ -14,10 +14,17 @@ namespace GameDeals.Services
             _config = config;
         }
 
-        public void Log(string appName, Exception ex)
+        public void Log(Exception ex)
         {
-            var url = _config["LoggingUrl"];
-            var logger = new ErrorLogger(url, appName);
+            var loggingConfig = _config.GetSection("Logging");
+
+            var url = loggingConfig["Url"];
+            var clientId = loggingConfig["ClientId"];
+            var clientSecret = loggingConfig["ClientSecret"];
+            var tokenEndpoint = loggingConfig["TokenEndpoint"];
+
+            var logger = new ErrorLogger(clientId, clientSecret, tokenEndpoint, url);
+
             logger.Log(ex);
         }
     }

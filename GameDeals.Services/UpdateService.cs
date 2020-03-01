@@ -48,7 +48,7 @@ namespace GameDeals.Services
             }
             catch (Exception ex)
             {
-                _logger.Log("GameDealsUpdater", ex);
+                _logger.Log(ex);
             }
         }
 
@@ -112,7 +112,7 @@ namespace GameDeals.Services
             {
                 ex.Data.Add("Feed", $"{feed.Id} - {feed.Title}");
                 ex.Data.Add("Feed URL", feed.FeedUrl);
-                _logger.Log("GameDealsUpdater", ex);
+                _logger.Log(ex);
                 errored = true;
                 items = new SyndicationItem[] {};
             }

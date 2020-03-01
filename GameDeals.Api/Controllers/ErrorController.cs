@@ -20,7 +20,7 @@ namespace GameDeals.Api.Controllers
         {
             var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
 
-            _logger.Log("GameDealsApi", context.Error);
+            _logger.Log(context.Error);
 
             return Problem();
         }

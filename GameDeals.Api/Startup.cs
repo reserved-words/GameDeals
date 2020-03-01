@@ -57,14 +57,7 @@ namespace GameDeals.Api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/error");
-            }
+            app.UseExceptionHandler("/error");
 
             app.UseCors(
                 options => options
